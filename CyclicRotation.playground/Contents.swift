@@ -18,21 +18,25 @@ import UIKit
 
 func solution(A: [Int], K: Int) -> [Int] {
     
-    var rotatedArr = A
+    var result = A
     
     for _ in 1...K {
-        
-        var tmpArr = rotatedArr
-        
-        for i in 0...A.count - 1 {
-            if (i == A.count - 1) {
-                tmpArr[0] = rotatedArr[i]
-            } else {
-                tmpArr[i + 1] = rotatedArr[i]
-            }
+        result = rotateRightOnce(A: result)
+    }
+    
+    return result
+}
+
+func rotateRightOnce(A: [Int]) -> [Int] {
+    // 同じサイズの配列を作成
+    var rotatedArr = Array<Int>(repeating: 0, count: A.count)
+    
+    for i in 0...A.count-1 {
+        if (i == A.count - 1) {
+            rotatedArr[0] = A[i]
+        } else {
+            rotatedArr[i + 1] = A[i]
         }
-        
-        rotatedArr = tmpArr
     }
     
     return rotatedArr
