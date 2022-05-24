@@ -17,9 +17,11 @@ import UIKit
  */
 
 func solution(A: [Int], K: Int) -> [Int] {
+    // Egde Cases
+    guard !A.isEmpty else { return [] }
+    guard K > 0 else { return A }
     
     var result = A
-    
     for _ in 1...K {
         result = rotateRightOnce(A: result)
     }
@@ -28,10 +30,9 @@ func solution(A: [Int], K: Int) -> [Int] {
 }
 
 func rotateRightOnce(A: [Int]) -> [Int] {
-    // 同じサイズの配列を作成
     var rotatedArr = Array<Int>(repeating: 0, count: A.count)
     
-    for i in 0...A.count-1 {
+    for i in 0...A.count - 1 {
         if (i == A.count - 1) {
             rotatedArr[0] = A[i]
         } else {
