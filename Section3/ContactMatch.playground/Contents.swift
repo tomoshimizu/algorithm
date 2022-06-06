@@ -30,7 +30,7 @@ public func solution(_ A : [String], _ B : [String], _ P : String) -> String {
         return "NO CONTACT"
     }
     
-    return matchName.sorted()[0]
+    return matchName.sorted().first!
 }
 
 let A = ["pim", "pom"]
