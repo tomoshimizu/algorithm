@@ -17,32 +17,20 @@ import Foundation
  */
 
 public func solution(_ A : [String], _ B : [String], _ P : String) -> String {
-    var matchIndex: [Int] = []
+    var matchName: [String] = []
     
     for (index, phoneNum) in B.enumerated() {
         if phoneNum.contains(P) {
-            matchIndex.append(index)
+            matchName.append(A[index])
         }
     }
     
-    // 該当数が0
-    if matchIndex.isEmpty {
+    // 該当なし
+    if matchName.isEmpty {
         return "NO CONTACT"
     }
     
-    // 該当数が1
-    if matchIndex.count == 1 {
-        return A[matchIndex[0]]
-    }
-    
-    // 複数該当
-    var matchName: [String] = []
-    for idx in matchIndex {
-        matchName.append(A[idx])
-    }
-    matchName.sorted()
-    
-    return matchName.sorted()[0]
+    return matchName.sorted().first!
 }
 
 let A = ["pim", "pom"]
